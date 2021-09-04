@@ -71,7 +71,7 @@ h1 {letter-spacing: 6px}
           console.log(ethereum.request({ method: 'eth_requestAccounts' }))
           b = "contractAddressV2"
           console.log(contractAddr)
-         
+         	web3 = new Web3(ethereum);
               // console.log("here woah")
 
           contractCG = new web3.eth.Contract(contractABI, contractAddress);
@@ -81,7 +81,7 @@ h1 {letter-spacing: 6px}
           left = await getMintLeft()
 
           console.log(left)
-          
+
           index = await getTokenIndex( 0 )
 
           console.log(index)
