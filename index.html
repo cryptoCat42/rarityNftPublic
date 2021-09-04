@@ -48,8 +48,20 @@ h1 {letter-spacing: 6px}
 
 			ContractABI = [ {"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}, 
 				{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"} ]
-		async function init() {
-	   
+			async function init() {
+	    
+			async function getMintLeft() {
+			    // return contractCG.methods.leftForSale().call()
+		    console.log("calling total supply")
+				return contractCG.methods.totalSupply().call()
+			}
+
+			async function getTokenIndex( index ) {
+			    // return contractCG.methods.leftForSale().call()
+		    console.log("tokenByIndex function")
+				return contractCG.methods.tokenByIndex(index).call()
+			}
+
       console.log('Ethereum detected');
           
       contractAddr = "0xd4800DB3FCB114740Af10c566a6d5a269B626E09"
@@ -58,11 +70,26 @@ h1 {letter-spacing: 6px}
           console.log('Ethereum detected');
           console.log(ethereum.request({ method: 'eth_requestAccounts' }))
           b = "contractAddressV2"
-          console.log(contractAddress)
+          console.log(contractAddr)
          
               // console.log("here woah")
+
+          contractCG = new web3.eth.Contract(contractABI, contractAddress);
+
+          console.log(contractCG)
+          
+          left = await getMintLeft()
+
+          console.log(left)
+          
+          index = await getTokenIndex( 0 )
+
+          console.log(index)
+
+
+            
           web3 = new Web3(ethereum);
-          a  =     await connectWallet()
+          a    = await connectWallet()
           console.log(web3)
       }   
    
