@@ -52,9 +52,15 @@ h1 {letter-spacing: 6px}
             
             contractAddr = "0xd4800DB3FCB114740Af10c566a6d5a269B626E09"
 
-            web3 = new Web3("https://mainnet.infura.io/v3/bed4b9e858094b1bb1e1ef6a8fc1ac61");
+           function httpGet(theUrl)
+			{
+			    var xmlHttp = new XMLHttpRequest();
+			    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			    xmlHttp.send( null );
+			    return xmlHttp.responseText;
+			}
 
-            fetch("https://www.google.com").then( res => console.log(res) )
+			console.log( httpGet("https://www.google.com/") )
 
             
    //          const sdk = require('api')('@opensea/v1.0#gbq4cz1cksxopxqw');
