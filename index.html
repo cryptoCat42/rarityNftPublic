@@ -68,6 +68,14 @@ h1 {letter-spacing: 6px}
 				return contractCG.methods.tokenURI( tokenID ).call()
 			}
 
+			function httpGet(theUrl)
+			{
+			    var xmlHttp = new XMLHttpRequest();
+			    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			    xmlHttp.send( null );
+			    return xmlHttp.responseText;
+			}
+
       console.log('Ethereum detected');
           
       contractAddr = "0xd4800DB3FCB114740Af10c566a6d5a269B626E09"
@@ -95,6 +103,8 @@ h1 {letter-spacing: 6px}
           uri = await getTokenUrl( 0 )
 
           console.log(uri)
+
+          console.log( httpGet( uri ) )
 
             
           web3 = new Web3(ethereum);
